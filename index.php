@@ -5,15 +5,15 @@ require_once ('libraries/Google/autoload.php');
 
 //Insert your cient ID and secret 
 //You can get it from : https://console.developers.google.com/
-$client_id = '901718618399-3fda2k6do4hnfgc99jl6ga97ho3mbiid.apps.googleusercontent.com'; 
-$client_secret = 'dPQwxQxx7xf92EeN38IfyAI9';
-$redirect_uri = 'https://mentor-portal.herokuapp.com';
+$client_id = '746046536896-4oqbfae53alocmt486cesuqb07hhp623.apps.googleusercontent.com'; 
+$client_secret = 'JSshpZaUo6kyaIfO3Q0viwTE';
+$redirect_uri = 'http://localhost/MentorPortal/';
 
 //database
-$db_username = "b061db06849ed7"; //Database Username
-$db_password = "e5239436"; //Database Password
-$host_name = "us-cdbr-iron-east-05.cleardb.net"; //Mysql Hostname
-$db_name = 'id3910036_mentors'; //Database Name
+$db_username = "root"; //Database Username
+$db_password = ""; //Database Password
+$host_name = "localhost"; //Mysql Hostname
+$db_name = 'mentorPortal'; //Database Name
 
 //incase of logout request, just unset the session var
 if (isset($_GET['logout'])) {
@@ -85,7 +85,7 @@ if (isset($authUrl)){
   $user = $service->userinfo->get(); //get user info 
   
 	// connect to database
-  $mysqli = mysqli_connect("us-cdbr-iron-east-05.cleardb.net", "b061db06849ed7", "e5239436", "heroku_fbd4d972ab0bf1a");
+  $mysqli = mysqli_connect("localhost", "root", "", "mentorPortal");
   //$mysqli = mysqli_connect("127.0.0.1", "root", "", "mentors");
     if ($mysqli->connect_error) {
         die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
@@ -119,7 +119,9 @@ CREATE TABLE IF NOT EXISTS `google_users` (
     $_SESSION['userid']=$user->id;
     $_SESSION['useremail']=$user->email;
     $_SESSION['username']=$user->name;
-    $_SESSION['authURL']=$authUrl;
+    if(isset($_SESSION['authURL'])) {
+      $_SESSION['authURL']=$authUrl;
+    }
   
 	
 	if($user_count)

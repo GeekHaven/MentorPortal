@@ -9,12 +9,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 if (isset($_SESSION['access_token'])) {
-    if (strpos($useremail,'2016') == true || strpos($useremail,'2015') == true) {
+    if (strpos($useremail,'2017') == true || strpos($useremail,'2015') == true) {
         echo "<h1><center>No! You should not attempt to do this! I know you're a mentor. Go away!</center></h1>";
     } 
     else {
             $maile=$_POST['optradio'];
-            $connect = mysqli_connect("us-cdbr-iron-east-05.cleardb.net", "b061db06849ed7", "e5239436", "heroku_fbd4d972ab0bf1a");
+            $connect = mysqli_connect("localhost", "root", "", "mentorPortal");
     
             $ret = mysqli_query($connect, "SELECT * FROM `google_users_mentors` WHERE `max_count`>0 ");
             $retu = mysqli_query($connect, "SELECT * FROM `google_users`");
@@ -50,7 +50,7 @@ if (isset($_SESSION['access_token'])) {
                         $mail->SMTPAuth = true;                               // Enable SMTP authentication
                         $mail->Username = 'geekhaven@iiita.ac.in';                 // SMTP username
                         //$mail->Password = 'fofknwkqhdquubrm'; 
-                        $mail->Password = '';                           // SMTP password
+                        $mail->Password = 'Geekhaven2018';                           // SMTP password
                         $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
                         $mail->Port = 465;                                    // TCP port to connect to
                 
