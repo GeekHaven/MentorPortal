@@ -23,7 +23,7 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; GeekHaven 2017</p>
+            <p class="copyright text-muted">Copyright &copy; GeekHaven 2019</p>
             <p class="copyright text-muted">For queries contact <a href="https://www.fb.com/siddhant.srivastav.3">Siddhant Srivastav</a></p>
           </div>
         </div>

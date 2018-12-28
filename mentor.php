@@ -1,6 +1,6 @@
 <?php 
-  /*session_start();
-  if (isset($_SESSION['access_token'])) {  */
+  //session_start();
+  if (isset($_SESSION['access_token'])) {  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Mentors- Geekhaven</title>
 
     <!-- Bootstrap core CSS -->
@@ -21,7 +20,8 @@
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    
+    	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
         <!-- Custom styles for this template -->
         <link href="css/clean-blog.min.css" rel="stylesheet">
 
@@ -43,7 +43,7 @@
               <a class="nav-link" href="mentor.php">Home</a>
             </li>
             <li class="nav-item">
-              <?php $redirect_uri="https://mentor-portal.herokuapp.com"; echo "<a class='nav-link' href='".$redirect_uri."?logout'>Log Out</a>" ?>
+              <?php $redirect_uri='http://localhost/MentorPortal/'; echo "<a class='nav-link' href='".$redirect_uri."?logout'>Log Out</a>" ?>
             </li>
             </li>
           </ul>
@@ -58,7 +58,7 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="page-heading">
               <h1>Geekhaven Mentor</h1>
-              <span class="subheading">Portal is closed and will open soon for mentees.</span>
+             <!--<span class="subheading">Portal is closed and will open soon for mentees.</span>-->
             </div>
           </div>
         </div>
@@ -66,19 +66,21 @@
     </header>
 
 <?php 
-/*
-   $connect = mysqli_connect("us-cdbr-iron-east-05.cleardb.net", "b061db06849ed7", "e5239436", "heroku_fbd4d972ab0bf1a");
+
+   $connect = mysqli_connect("localhost", "root", "", "mentorPortal");
 
   $ret = mysqli_query($connect, "SELECT * FROM `google_users_mentors` WHERE google_id=$user->id");
 
   $data = mysqli_fetch_array($ret);
+	if($data['max_count']!=0){
   echo "<center>Your current mentee count is ".$data['max_count'].".</center>";
-*/
+}
+
 ?>
 
 
-
 <!--
+
 <div class="container">
         <form class="form-horizontal" action="addmentor.php" method="POST">
           <div class="form-group">
@@ -96,7 +98,7 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="number">Number of mentees:</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="number" placeholder="Enter password" min="3" name="maxcount" max="6">
+              <input type="number" class="form-control" id="number" placeholder="No. of mentees" min="3" name="maxcount" max="6">
             </div>
           </div>
           <div class="form-group">
@@ -107,6 +109,78 @@
         </form> 
     </div>
 -->
+
+
+	<div class="container">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" action="addmentor.php" method="POST" >
+				<span class="contact100-form-title">
+					Fill Details
+				</span>
+
+				<label class="label-input100" for="first-name">Tell us your name </label>
+				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
+					<input id="first-name" class="input100" type="text" name="first-name" placeholder="First name">
+					<span class="focus-input100"></span>
+				</div>
+				<br>
+				<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type last name">
+					<input class="input100" type="text" name="last-name" placeholder="Last name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="email">Enter your email </label>
+				<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+					<input id="email" class="input100" type="text" name="email" placeholder="Eg. example@iiita.ac.in">
+					<span class="focus-input100"></span>
+				</div>
+				<br>
+				<label class="label-input100" for="count">Mentee Count</label>
+				<div class="wrap-input100">
+				<input type="number" class="input100" id="number" placeholder="No. of mentees (3-6)" min="3" name="maxcount" max="6">
+					<span class="focus-input100"></span>
+				</div>
+				<br>
+				<label class="label-input100" for="Field">Field</label>
+				<div class="wrap-input100 validate-input form-control" data-validate="Field is required">
+					<input id="Field" list="fields" class="input100" name="field" placeholder="Select your Field">
+					<datalist id="fields">
+    						<option value="AppDev">
+    						<option value="Competitive">
+    						<option value="ML & AI">
+    						<option value="Blockchain">
+    						<option value="SoftDev">
+    						<option value="Cyber Security">
+    						<option value="WebDev">
+  					</datalist>	
+					<span class="focus-input100"></span>
+				</div>
+				<br>
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn">
+<?php 
+
+  $connect = mysqli_connect("localhost", "root", "", "mentorPortal");
+  $ret = mysqli_query($connect, "SELECT * FROM `google_users_mentors` WHERE google_id=$user->id");
+  $data = mysqli_fetch_array($ret);
+	if($data['max_count']!=0){
+  		echo "Update";
+	}else{
+		echo"Submit";
+	}
+?>
+						
+					</button>
+				</div>
+			</form>
+
+			<div class="contact100-more flex-col-c-m" style="background-image: url('images/back.jpg');">
+			 <div class="logo flex-col-c-m" style="background-image: url('images/logo.jpg'); background-size:150px 150px;">
+			 </div>
+			</div>
+
+		</div>
+	</div>
     <footer>
       <div class="container">
         <div class="row">
@@ -130,7 +204,7 @@
                 </a>
               </li>
             </ul>
-            <p class="copyright text-muted">Copyright &copy; GeekHaven 2017</p>
+            <p class="copyright text-muted">Copyright &copy; GeekHaven 2019</p>
             <p class="copyright text-muted">For queries contact <a href="https://www.fb.com/siddhant.srivastav.3">Siddhant Srivastav</a></p>
           </div>
         </div>
@@ -148,7 +222,7 @@
 
 </html>
 <?php
-/*
+
     } else {
       session_start();
       $authUrl=$_SESSION['authURL'];
@@ -159,5 +233,5 @@
       echo '<a class="login" href="' . $authUrl . '"><img src="https://developers.google.com/+/images/branding/sign-in-buttons/Red-signin_Google_base_44dp.png" /></a>';
       echo '</div>';
       include("footerm.php");
-    }*/
+    }
 ?>

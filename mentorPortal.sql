@@ -60,7 +60,8 @@ CREATE TABLE `google_users_mentors` (
   `google_picture_link` varchar(100) NOT NULL,
   `max_count` int(11) NOT NULL,
   `full` int(11) NOT NULL,
-  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `field` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
