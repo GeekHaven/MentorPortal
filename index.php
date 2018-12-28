@@ -72,6 +72,7 @@ if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 echo '<div>';
 if (isset($authUrl)){ 
 
+	//include("headerm.php");
 	include("headerl.php");
 	echo '<div align="center">';
 	echo '<h3>Login with Gmail to continue</h3>';
@@ -92,8 +93,8 @@ if (isset($authUrl)){
     }
 	
 	//check if user exist in database using COUNT
-  //$result = $mysqli->query("SELECT * FROM google_users_mentors WHERE google_id=$user->id");
-  $result = $mysqli->query("SELECT * FROM google_users WHERE google_id=$user->id");
+  $result = $mysqli->query("SELECT * FROM google_users_mentors WHERE google_id=$user->id");
+  //$result = $mysqli->query("SELECT * FROM google_users WHERE google_id=$user->id");
   //$result = $mysqli->query("SELECT COUNT(google_id) as usercount FROM google_users WHERE google_id=$user->id");
 	//$user_count = $result->fetch_all()->usercount; //will return 0 if user doesn't exist
 
@@ -126,18 +127,18 @@ CREATE TABLE IF NOT EXISTS `google_users` (
 	
 	if($user_count)
     {
-      include("selectmentor.php");
-      //include("mentor.php");
+      //include("selectmentor.php");
+      include("mentor.php");
     }
 	else
 	{ 
-    $statement = $mysqli->query("INSERT INTO google_users (google_id, google_name, google_email, google_link, google_picture_link) VALUES ($user->id,'$user->name','$user->email','$user->link','$user->picture')");
-    //$statement = $mysqli->query("INSERT INTO google_users_mentors (google_id, google_name, google_email, google_link, google_picture_link) VALUES ($user->id,'$user->name','$user->email','$user->link','$user->picture')");
+    //$statement = $mysqli->query("INSERT INTO google_users (google_id, google_name, google_email, google_link, google_picture_link) VALUES ($user->id,'$user->name','$user->email','$user->link','$user->picture')");
+    $statement = $mysqli->query("INSERT INTO google_users_mentors (google_id, google_name, google_email, google_link, google_picture_link) VALUES ($user->id,'$user->name','$user->email','$user->link','$user->picture')");
     //$statement = $mysqli->prepare("INSERT INTO google_users (google_id, google_name, google_email, google_link, google_picture_link) VALUES (?,?,?,?,?)");
 		//$statement->bind_param('issss', $user->id,  $user->name, $user->email, $user->link, $user->picture);
     //$statement->execute();
-    include("selectmentor.php");
-    //include("mentor.php");
+    //include("selectmentor.php");
+    include("mentor.php");
 
     }
 	
