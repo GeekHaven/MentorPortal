@@ -28,7 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="mentor.php">Mentor Registration</a>
+        <a class="navbar-brand" href="mentor.php">Mentor Portal</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -39,7 +39,7 @@
               <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-            <?php $redirect_uri='http://localhost/MentorPortal/'; echo "<a class='nav-link' href='".$redirect_uri."?logout'>Log Out</a>" ?>
+            <a class='nav-link' href='/'>Log In</a>
             </li>
             </li>
           </ul>
@@ -48,17 +48,17 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead"  style="background-image: url('img/Background.jpg'); background-size:1300px 800px; background-position:right bottom" >
+    <header class="masthead"  style="background-image: url('img/Background.jpg'); background-size:1300px 700px; background-position:right bottom" >
       <div class="overlay" style="opacity:0.75;"></div>
       <div class="container">
         <div class="row">
-          <div class="col-lg-6 col-md-8 mx-auto">
+          <div class="col-lg-7 col-md-8 mx-auto">
             <div class="page-heading">
-              <h1>Geekhaven Mentor</h1>
-              <span class="subheading">Fill the form below and select the number of mentees.</span>
+              <h1 style="font :Times;"><span>Mentor Portal</span></h1>
+              <!--<span class="subheading">Fill the form below and select the number of mentees.</span>-->
             </div>
           </div>
-	 <div class="col-lg-4 col-md-2 mx-auto"></div>
+	 <div class="col-lg-3 col-md-2 mx-auto"></div>
         </div>
       </div>
     </header>

@@ -51,16 +51,17 @@
       </div>
     </nav>
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/about-bg.jpg')">
-      <div class="overlay"></div>
+    <header class="masthead"  style="background-image: url('img/Background.jpg'); background-size:1300px 800px; background-position:right bottom" >
+      <div class="overlay" style="opacity:0.75;"></div>
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="col-lg-8 col-md-8 mx-auto">
             <div class="page-heading">
               <h1>Geekhaven Mentor</h1>
              <!--<span class="subheading">Portal is closed and will open soon for mentees.</span>-->
             </div>
           </div>
+	 <div class="col-lg-2 col-md-2 mx-auto"></div>
         </div>
       </div>
     </header>
@@ -77,39 +78,6 @@
 }
 
 ?>
-
-
-<!--
-
-<div class="container">
-        <form class="form-horizontal" action="addmentor.php" method="POST">
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="name">Name:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="<?php //echo "$user->name" ?>">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Email:</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" value="<?php //echo "$user->email" ?>">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="number">Number of mentees:</label>
-            <div class="col-sm-10">
-              <input type="number" class="form-control" id="number" placeholder="No. of mentees" min="3" name="maxcount" max="6">
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-default">Submit</button>
-            </div>
-          </div>
-        </form> 
-    </div>
--->
-
 
 	<div class="container">
 		<div class="wrap-contact100">
