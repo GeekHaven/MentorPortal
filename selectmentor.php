@@ -24,7 +24,7 @@ if (isset($_SESSION['access_token'])) {
             $f = $po['full'];
 
 
-            include("headerm.php");
+	    $flag=0;
     
     
             require 'vendor/autoload.php';
@@ -67,26 +67,29 @@ if (isset($_SESSION['access_token'])) {
                     } catch (Exception $e) {
                         echo "<center>There is some error!<br></center>";
                     }
+            	    include("headerlm.php");
                     echo "<center>You have selected: ".$_POST['optradio'].". He has been sent a mail but Go ahead contact him!</center><br>";
                     $connect->query("UPDATE google_users_mentors SET max_count=$max WHERE google_email='$maile'");
                     $connect->query("UPDATE google_users SET selected=1 WHERE google_id=$userid");
+		    $flag = 1;
                 }
                 } else {
                     echo "Unfortunately the mentor was selected by someone else";
                 }
                 
             }
-    
+            
             $a = $connect->query("SELECT * FROM google_users WHERE google_id=$userid");
             $c = mysqli_fetch_array($a);
     
                 if ($c['selected'] == 0) {
+			include("headerm.php");
                         echo "<div class='container'>";
-                        echo "<center>I've had my fun. Here is the list. Huryy up!</center>";
-                        //echo "<center><div class='col-lg-5 col-md-5 col-sm-5 text-center'><form><input type='text' name='answer' placeholder='Enter the answer.'><button class='btn btn-primary' onclick='check(this.form)'>Submit</button></form></div></center>";
-                        //echo "<center>Remember use no spaces or capital letters if you want to go further. And be fast to stop the page!</center></div>";
+                        //echo "<center>I've had my fun. Here is the list. Huryy up!</center>";
+                        echo "<center><div class='col-lg-5 col-md-5 col-sm-5 text-center'><form><input type='text' name='answer' placeholder='Enter the answer.'><button class='btn btn-primary' onclick='check(this.form)'>Submit</button></form></div></center>";
+                        echo "<center>Remember use no spaces or capital letters if you want to go further. And be fast to stop the page!</center></div>";
                         echo "<div class='container' id='p2'>";
-                        echo "<form action='' method='POST' class='form'>";
+                        echo "<form action='' method='POST' class='form>";
                     while ($data = mysqli_fetch_array($ret)) {
 
                         echo "<div class='col-lg-3 col-md-3 col-sm-6 col-xs-12'>";
@@ -100,7 +103,9 @@ if (isset($_SESSION['access_token'])) {
                     echo "</form>";
                 
                 } else {
-                    echo "<center>You've selected your mentor! Contact him!</center>";
+			if($flag!=1){
+		    include("headerlm.php");
+                    echo "<center>You've selected your mentor! Contact him!</center>";}
                 }
                 
             include("footerm.php");

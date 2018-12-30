@@ -48,16 +48,17 @@
     </nav>
 
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('img/about-bg.jpg')">
-      <div class="overlay"></div>
+    <header class="masthead"  style="background-image: url('img/Background.jpg'); background-size:1300px 800px; background-position:right bottom" >
+      <div class="overlay" style="opacity:0.75;"></div>
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="col-lg-7 col-md-8 mx-auto">
             <div class="page-heading">
-              <h1>Geekhaven Mentor</h1>
+              <h1 style="font :Times;"><span>Geekhaven Mentor</span></h1>
               <span class="subheading">Fill the form below and select the number of mentees.</span>
             </div>
           </div>
+	 <div class="col-lg-3 col-md-2 mx-auto"></div>
         </div>
       </div>
     </header>
