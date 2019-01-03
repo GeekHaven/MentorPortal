@@ -13,7 +13,7 @@ if (isset($_SESSION['access_token'])) {
         echo "<h1><center>No! You should not attempt to do this! I know you're a mentor. Go away!</center></h1>";
     } 
     else {
-            $maile=$_POST['optradio'];
+            $maile=$_POST['selector'];
             $connect = mysqli_connect("localhost", "root", "", "mentorPortal");
     
             $ret = mysqli_query($connect, "SELECT * FROM `google_users_mentors` WHERE `max_count`>0 ");
@@ -33,7 +33,7 @@ if (isset($_SESSION['access_token'])) {
             if (isset($_POST['submit'])) {
                 if ($f == 0) {
                     
-                if(isset($_POST['optradio']))
+                if(isset($_POST['selector']))
                 {
                     $connect->query("UPDATE `google_users` SET mentor_name='$maile' WHERE google_id=$userid ");
                     $d = $connect->query("SELECT max_count FROM `google_users_mentors` WHERE google_email='$maile'");
@@ -68,7 +68,7 @@ if (isset($_SESSION['access_token'])) {
                         echo "<center>There is some error!<br></center>";
                     }
             	    include("headerlm.php");
-                    echo "<center>You have selected: ".$_POST['optradio'].". He has been sent a mail but Go ahead contact him!</center><br>";
+                    echo "<center>You have selected: ".$_POST['selector'].". He has been sent a mail but Go ahead contact him!</center><br>";
                     $connect->query("UPDATE google_users_mentors SET max_count=$max WHERE google_email='$maile'");
                     $connect->query("UPDATE google_users SET selected=1 WHERE google_id=$userid");
 		    $flag = 1;
@@ -86,21 +86,29 @@ if (isset($_SESSION['access_token'])) {
 			include("headerm.php");
                         echo "<div class='container'>";
                         //echo "<center>I've had my fun. Here is the list. Huryy up!</center>";
-                        echo "<center><div class='col-lg-5 col-md-5 col-sm-5 text-center'><form><input type='text' name='answer' placeholder='Enter the answer.'><button class='btn btn-primary' onclick='check(this.form)'>Submit</button></form></div></center>";
-                        echo "<center>Remember use no spaces or capital letters if you want to go further. And be fast to stop the page!</center></div>";
-                        echo "<div class='container' id='p2'>";
-                        echo "<form action='' method='POST' class='form>";
-                    while ($data = mysqli_fetch_array($ret)) {
+                        //echo "<center><div class='col-lg-5 col-md-5 col-sm-5 text-center'><form><input type='text' name='answer' placeholder='Enter the answer.'><button class='btn btn-primary' onclick='check(this.form)'>Submit</button></form></div></center>";
+                        //echo "<center>Remember use no spaces or capital letters if you want to go further. And be fast to stop the page!</center></div>";
+echo '<link rel="stylesheet" type="text/css" href="css/list.css"></head>'; 
 
-                        echo "<div class='col-lg-3 col-md-3 col-sm-6 col-xs-12'>";
-                        echo "<label class='radio-inline'>";
-                        echo "<input type='radio' name='optradio' value='".$data['google_email']."'>".$data['google_name'];
-                        echo "</label>";
-                        echo "</div>";
+                        echo "<div class='container1' id='p2'>";
+                        echo "<form action='' method='POST' class='form>";
+			echo "<div class='container1'>";
+			echo "<h2>I choose:</h2>";
+                    while ($data = mysqli_fetch_array($ret)) {
+			echo "<ul class='ful'>";
+  			echo "<li class='fli'>";
+    			echo "<input type='radio' id='t-option' name='selector' value='".$data['google_email']."'>";
+    			echo "<label for='t-option'>".$data['google_name']." (".$data['field'].")</label>";
+    			echo "<div class='check'><div class='inside'></div></div>";
+  			echo "</li>";
+			echo "</ul>";
+
+
                     }
-                    
-                echo "<button type='submit' name='submit' class='btn btn-default'>Submit</button>";
+
+                echo "<center><button type='submit' name='submit' class='btn btn-default'>Submit</button></center>";
                     echo "</form>";
+                        echo "</div>";
                 
                 } else {
 			if($flag!=1){
@@ -124,3 +132,4 @@ if (isset($_SESSION['access_token'])) {
 }
 
 ?>
+
