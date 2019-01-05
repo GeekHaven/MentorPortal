@@ -1,5 +1,5 @@
 <?php 
-
+ini_set('display_errors',0);
 $userid = $_SESSION['userid'];
 $useremail = $_SESSION['useremail'];
 $usenam = $_SESSION['username'];
@@ -13,7 +13,7 @@ if (isset($_SESSION['access_token'])) {
         echo "<h1><center>No! You should not attempt to do this! I know you're a mentor. Go away!</center></h1>";
     } 
     else {
-            $maile=$_POST['selector'];
+	    $maile=$_POST['selector'];
             $connect = mysqli_connect("localhost", "root", "", "mentorPortal");
     
             $ret = mysqli_query($connect, "SELECT * FROM `google_users_mentors` WHERE `max_count`>0 ");
@@ -90,10 +90,10 @@ if (isset($_SESSION['access_token'])) {
                         //echo "<center>Remember use no spaces or capital letters if you want to go further. And be fast to stop the page!</center></div>";
 echo '<link rel="stylesheet" type="text/css" href="css/list.css"></head>'; 
 
-                        echo "<div class='container1' id='p2'>";
+                        echo "<div class='container1' id='p2' style='width:800px;'>";
                         echo "<form action='' method='POST' class='form>";
 			echo "<div class='container1'>";
-			echo "<h2>I choose:</h2>";
+			echo "<h2>I choose:</h2><br>";
                     while ($data = mysqli_fetch_array($ret)) {
 			echo "<ul class='ful'>";
   			echo "<li class='fli'>";

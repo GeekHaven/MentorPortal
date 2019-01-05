@@ -187,7 +187,7 @@ iframe {
 /*==================================================================
 [ Contact more ]*/
 .contact100-more {
-  width: 45%;
+  width: 30%;
   background-repeat: repeat;
   background-size: ;
   background-position: center;
@@ -223,7 +223,7 @@ iframe {
 [ Form ]*/
 
 .contact100-form {
-  width: 75%;
+  width: 70%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

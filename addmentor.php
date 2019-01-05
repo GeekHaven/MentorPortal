@@ -4,11 +4,14 @@ session_start();
     
     //session_start();
     $userid=$_SESSION['userid'];
-
-    $field = $_POST['field'];
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $maxcount = $_POST['maxcount'];
+if (isset($_POST['field'])){ 
+$field = $_POST['field'];}
+if (isset($_POST['name'])){
+    $name = $_POST['name'];}
+if (isset($_POST['email'])){
+    $email = $_POST['email'];}
+if (isset($_POST['maxcount'])){
+    $maxcount = $_POST['maxcount'];}
 
     $connect = mysqli_connect("localhost", "root", "", "mentorPortal");
     
@@ -48,7 +51,7 @@ session_start();
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="mentor.php">GeekHaven Mentor Registration</a>
+        <a class="navbar-brand" href="#">GeekHaven Mentor Registration</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -56,7 +59,7 @@ session_start();
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="mentor.php">Home</a>
+              <a class="nav-link" href="#">Home</a>
             </li>
             <li class="nav-item">
               <?php $redirect_uri='http://localhost/MentorPortal/'; echo "<a class='nav-link' href='".$redirect_uri."?logout'>Log Out</a>" ?>
